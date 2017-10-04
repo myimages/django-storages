@@ -124,7 +124,7 @@ class GoogleCloudStorage(Storage):
         except NotFound:
             if self.auto_create_bucket:
                 bucket = self.client.create_bucket(name)
-                bucket.acl.save_predefined(self.auto_create_acl)
+                bucket.default_object_acl.save_predefined(self.auto_create_acl)
                 return bucket
             raise ImproperlyConfigured("Bucket %s does not exist. Buckets "
                                        "can be automatically created by "
